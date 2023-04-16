@@ -39,4 +39,14 @@ public class MyBookingHotel {
         assertNotNull(newsletterInput);
         newsletterInput.sendKeys("test@test.com");
     }
+
+    @Test
+    public void navigateToAndFillRegistrationForm() {
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(16));
+        driver.get("https://hotel-testlab.coderslab.pl/en/");
+        WebElement signInBtn = driver.findElement(By.cssSelector("ul.navbar-nav li a.user_login"));
+        signInBtn.click();
+    }
 }
