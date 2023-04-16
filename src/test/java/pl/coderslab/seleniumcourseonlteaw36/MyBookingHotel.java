@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -48,5 +49,11 @@ public class MyBookingHotel {
         driver.get("https://hotel-testlab.coderslab.pl/en/");
         WebElement signInBtn = driver.findElement(By.cssSelector("ul.navbar-nav li a.user_login"));
         signInBtn.click();
+        WebElement emailInput = driver.findElement(By.cssSelector("#email_create"));
+        String randomEmail = UUID.randomUUID().toString() + "@mail.pl";
+        emailInput.sendKeys(randomEmail);
+
+        WebElement submitButton = driver.findElement(By.cssSelector("#SubmitCreate"));
+        submitButton.click();
     }
 }
