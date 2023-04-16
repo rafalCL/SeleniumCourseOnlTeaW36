@@ -7,10 +7,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
-import java.util.List;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static pl.coderslab.seleniumcourseonlteaw36.Tools.assertVisibleAndEnabled;
 
 // ocą lokalizatora By.id:
 //
@@ -55,5 +55,22 @@ public class MyBookingHotel {
 
         WebElement submitButton = driver.findElement(By.cssSelector("#SubmitCreate"));
         submitButton.click();
+
+        WebElement firstNameInput = driver.findElement(By.cssSelector("#customer_firstname"));
+        assertVisibleAndEnabled(firstNameInput);
+        firstNameInput.sendKeys("Ala");
+        WebElement lastNameInput = driver.findElement(By.cssSelector("#customer_lastname"));
+        assertVisibleAndEnabled(lastNameInput);
+        lastNameInput.sendKeys("Makota");
+        WebElement registrationEmailInput = driver.findElement(By.cssSelector("#email"));
+        assertVisibleAndEnabled(registrationEmailInput);
+        WebElement passwordInput = driver.findElement(By.cssSelector("#passwd"));
+        assertVisibleAndEnabled(passwordInput);
+        passwordInput.sendKeys("admin123");
+
+        WebElement registrationSubmitButton = driver.findElement(By.cssSelector("#submitAccount"));
+        assertVisibleAndEnabled(registrationSubmitButton);
+        registrationSubmitButton.click();
+        // todo assert account created
     }
 }
