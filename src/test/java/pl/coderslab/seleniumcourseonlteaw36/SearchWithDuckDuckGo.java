@@ -21,7 +21,6 @@ public class SearchWithDuckDuckGo {
         searchInput.sendKeys("W pustyni i w puszczy");
         WebElement searchButton = driver.findElement(By.id("search_button_homepage"));
         searchButton.click();
-        searchButton.sendKeys();
         List<WebElement> searchResults = driver.findElements(By.cssSelector("div#links article h2 a span"));
         for(int i = 0; i < 3; i++) {
             WebElement oneSearchResult = searchResults.get(i);
