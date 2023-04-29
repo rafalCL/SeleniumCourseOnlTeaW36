@@ -1,22 +1,27 @@
 package pl.coderslab.seleniumcourseonlteaw36.pageobject;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class HotelTestlabCreateAnAccountPage {
-    private final WebDriver driver;
+    @FindBy(id = "email")
+    private WebElement registrationEmailInput;
+    @FindBy(id = "customer_firstname")
+    private WebElement firstNameInput;
+    @FindBy(id = "customer_lastname")
+    private WebElement lastNameInput;
+    @FindBy(id = "passwd")
+    private WebElement passwordInput;
+    @FindBy(id = "submitAccount")
+    private WebElement registrationSubmitButton;
 
     public HotelTestlabCreateAnAccountPage(WebDriver driver) {
-        this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
     public void fillPersonalInformationForm(UserPersonalData userData) {
-        WebElement firstNameInput = driver.findElement(By.cssSelector("#customer_firstname"));
-        WebElement lastNameInput = driver.findElement(By.cssSelector("#customer_lastname"));
-        WebElement registrationEmailInput = driver.findElement(By.cssSelector("#email"));
-        WebElement passwordInput = driver.findElement(By.cssSelector("#passwd"));
-
         firstNameInput.sendKeys(userData.getFirstName());
         lastNameInput.sendKeys(userData.getLastName());
         if (userData.getEmail() != null) {
@@ -26,13 +31,11 @@ public class HotelTestlabCreateAnAccountPage {
     }
 
     public void clickRegister() {
-        WebElement registrationSubmitButton = driver.findElement(By.cssSelector("#submitAccount"));
         // assertVisibleAndEnabled(registrationSubmitButton);
         registrationSubmitButton.click();
     }
 
     public String getEmail() {
-        WebElement registrationEmailInput = driver.findElement(By.cssSelector("#email"));
         return registrationEmailInput.getAttribute("value");
     }
 }
