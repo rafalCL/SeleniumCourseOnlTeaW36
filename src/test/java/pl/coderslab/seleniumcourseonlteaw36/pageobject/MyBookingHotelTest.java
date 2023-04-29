@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pl.coderslab.seleniumcourseonlteaw36.Tools;
 
 import java.time.Duration;
 import java.util.UUID;
@@ -57,12 +58,9 @@ public class MyBookingHotelTest {
         HotelTestlabMainPage hotelMainPage = new HotelTestlabMainPage(driver);
         hotelMainPage.clickSignIn();
 
-//        WebElement emailInput = driver.findElement(By.cssSelector("#email_create"));
-//        String randomEmail = UUID.randomUUID().toString() + "@mail.pl";
-//        emailInput.sendKeys(randomEmail);
-//
-//        WebElement submitButton = driver.findElement(By.cssSelector("#SubmitCreate"));
-//        submitButton.click();
+        final String randomEmail = Tools.generateRandomEmail();
+        HotelTestlabAuthenticationPage authenticationPage = new HotelTestlabAuthenticationPage(driver);
+        authenticationPage.submitCreateAnAccountForm(randomEmail);
 //
 //        WebElement firstNameInput = driver.findElement(By.cssSelector("#customer_firstname"));
 //        assertVisibleAndEnabled(firstNameInput);
