@@ -61,22 +61,16 @@ public class MyBookingHotelTest {
         final String randomEmail = Tools.generateRandomEmail();
         HotelTestlabAuthenticationPage authenticationPage = new HotelTestlabAuthenticationPage(driver);
         authenticationPage.submitCreateAnAccountForm(randomEmail);
-//
-//        WebElement firstNameInput = driver.findElement(By.cssSelector("#customer_firstname"));
-//        assertVisibleAndEnabled(firstNameInput);
-//        firstNameInput.sendKeys("Ala");
-//        WebElement lastNameInput = driver.findElement(By.cssSelector("#customer_lastname"));
-//        assertVisibleAndEnabled(lastNameInput);
-//        lastNameInput.sendKeys("Makota");
-//        WebElement registrationEmailInput = driver.findElement(By.cssSelector("#email"));
-//        assertVisibleAndEnabled(registrationEmailInput);
-//        WebElement passwordInput = driver.findElement(By.cssSelector("#passwd"));
-//        assertVisibleAndEnabled(passwordInput);
-//        passwordInput.sendKeys("admin123");
-//
-//        WebElement registrationSubmitButton = driver.findElement(By.cssSelector("#submitAccount"));
-//        assertVisibleAndEnabled(registrationSubmitButton);
-//        registrationSubmitButton.click();
+
+        HotelTestlabCreateAnAccountPage createAnAccountPage = new HotelTestlabCreateAnAccountPage(driver);
+        final UserPersonalData userData = new UserPersonalData()
+                                            .setFirstName("Ala")
+                                            .setLastName("Makota")
+                                            .setEmail(randomEmail)
+                                            .setPassword("admin123");
+        createAnAccountPage.fillPersonalInformationForm(userData);
+        createAnAccountPage.clickRegister();
+
         // todo assert account created
     }
 }
