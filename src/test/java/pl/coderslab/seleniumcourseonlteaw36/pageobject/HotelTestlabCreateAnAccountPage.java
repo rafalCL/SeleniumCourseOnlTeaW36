@@ -4,8 +4,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class HotelTestlabCreateAnAccountPage {
+    private final WebDriver driver;
+
     @FindBy(id = "email")
     private WebElement registrationEmailInput;
     @FindBy(id = "customer_firstname")
@@ -18,6 +23,7 @@ public class HotelTestlabCreateAnAccountPage {
     private WebElement registrationSubmitButton;
 
     public HotelTestlabCreateAnAccountPage(WebDriver driver) {
+        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
@@ -36,6 +42,10 @@ public class HotelTestlabCreateAnAccountPage {
     }
 
     public String getEmail() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(4));
+        // the below code uses a "lambda expression"
+        wait.until(wd -> !registrationEmailInput.getAttribute("value").equals("")); // this is like a while that tests for at most 4 seconds
+
         return registrationEmailInput.getAttribute("value");
     }
 }

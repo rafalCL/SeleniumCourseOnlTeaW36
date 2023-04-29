@@ -68,7 +68,6 @@ public class MyBookingHotelTest {
                                             .setLastName("Makota")
                                             //.setEmail(randomEmail)
                                             .setPassword("admin123");
-        Thread.sleep(1000);
         assertEquals(randomEmail, createAnAccountPage.getEmail());
 //        assertVisibleAndEnabled(firstNameInput);
 //        assertVisibleAndEnabled(lastNameInput);
