@@ -3,19 +3,21 @@ package pl.coderslab.seleniumcourseonlteaw36.pageobject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import pl.coderslab.seleniumcourseonlteaw36.Tools;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class HotelTestlabAuthenticationPage {
-    private final WebDriver driver;
+    @FindBy(id = "email_create")
+    private WebElement emailInput;
+    @FindBy(id = "SubmitCreate")
+    private WebElement submitButton;
 
     public HotelTestlabAuthenticationPage(WebDriver driver) {
-        this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
     public void submitCreateAnAccountForm(String email) {
-        WebElement emailInput = driver.findElement(By.cssSelector("#email_create"));
         emailInput.sendKeys(email);
-        WebElement submitButton = driver.findElement(By.cssSelector("#SubmitCreate"));
         submitButton.click();
     }
 }
