@@ -1,5 +1,6 @@
 package pl.coderslab.seleniumcourseonlteaw36.pageobject;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -25,6 +26,16 @@ import static pl.coderslab.seleniumcourseonlteaw36.Tools.assertVisibleAndEnabled
 //Użyj metody sendKeys np.
 
 public class MyBookingHotelTest {
+    private WebDriver driver;
+
+    @BeforeEach
+    public void beforeEach() {
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
+        this.driver = new ChromeDriver();
+        this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(16));
+        this.driver.get("https://hotel-testlab.coderslab.pl/en/");
+    }
+
     @Test
     public void searchWithDuckDuckGo() {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
@@ -43,11 +54,6 @@ public class MyBookingHotelTest {
 
     @Test
     public void navigateToAndFillRegistrationForm() {
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(16));
-        driver.get("https://hotel-testlab.coderslab.pl/en/");
-
         HotelTestlabMainPage hotelMainPage = new HotelTestlabMainPage(driver);
         hotelMainPage.clickSignIn();
 
