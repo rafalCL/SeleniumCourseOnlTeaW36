@@ -14,13 +14,7 @@ public class HotelTestlabCreateAnAccountPage {
     public void fillPersonalInformationForm(UserPersonalData userData) {
         WebElement firstNameInput = driver.findElement(By.cssSelector("#customer_firstname"));
         WebElement lastNameInput = driver.findElement(By.cssSelector("#customer_lastname"));
-        WebElement registrationEmailInput = driver.findElement(By.cssSelector("#email"));
         WebElement passwordInput = driver.findElement(By.cssSelector("#passwd"));
-
-//        assertVisibleAndEnabled(firstNameInput);
-//        assertVisibleAndEnabled(lastNameInput);
-//        assertVisibleAndEnabled(registrationEmailInput);
-//        assertVisibleAndEnabled(passwordInput);
 
         firstNameInput.sendKeys(userData.getFirstName());
         lastNameInput.sendKeys(userData.getLastName());
@@ -31,5 +25,10 @@ public class HotelTestlabCreateAnAccountPage {
         WebElement registrationSubmitButton = driver.findElement(By.cssSelector("#submitAccount"));
         // assertVisibleAndEnabled(registrationSubmitButton);
         registrationSubmitButton.click();
+    }
+
+    public String getEmail() {
+        WebElement registrationEmailInput = driver.findElement(By.cssSelector("#email"));
+        return registrationEmailInput.getAttribute("value");
     }
 }

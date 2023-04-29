@@ -11,7 +11,7 @@ import pl.coderslab.seleniumcourseonlteaw36.Tools;
 import java.time.Duration;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static pl.coderslab.seleniumcourseonlteaw36.Tools.assertVisibleAndEnabled;
 
 // ocą lokalizatora By.id:
@@ -54,7 +54,7 @@ public class MyBookingHotelTest {
     }
 
     @Test
-    public void navigateToAndFillRegistrationForm() {
+    public void navigateToAndFillRegistrationForm() throws InterruptedException {
         HotelTestlabMainPage hotelMainPage = new HotelTestlabMainPage(driver);
         hotelMainPage.clickSignIn();
 
@@ -68,9 +68,16 @@ public class MyBookingHotelTest {
                                             .setLastName("Makota")
                                             .setEmail(randomEmail)
                                             .setPassword("admin123");
+        Thread.sleep(1000);
+        assertEquals(randomEmail, createAnAccountPage.getEmail());
+//        assertVisibleAndEnabled(firstNameInput);
+//        assertVisibleAndEnabled(lastNameInput);
+//        assertVisibleAndEnabled(registrationEmailInput);
+//        assertVisibleAndEnabled(passwordInput);
         createAnAccountPage.fillPersonalInformationForm(userData);
         createAnAccountPage.clickRegister();
 
-        // todo assert account created
+        HotelTestlabMyAccountPage myAccountPage = new HotelTestlabMyAccountPage(driver);
+        assertTrue(myAccountPage.isAccountCreationConfirmationDisplayed());
     }
 }
