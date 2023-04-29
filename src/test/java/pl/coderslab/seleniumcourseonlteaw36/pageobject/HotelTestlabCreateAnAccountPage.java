@@ -14,10 +14,14 @@ public class HotelTestlabCreateAnAccountPage {
     public void fillPersonalInformationForm(UserPersonalData userData) {
         WebElement firstNameInput = driver.findElement(By.cssSelector("#customer_firstname"));
         WebElement lastNameInput = driver.findElement(By.cssSelector("#customer_lastname"));
+        WebElement registrationEmailInput = driver.findElement(By.cssSelector("#email"));
         WebElement passwordInput = driver.findElement(By.cssSelector("#passwd"));
 
         firstNameInput.sendKeys(userData.getFirstName());
         lastNameInput.sendKeys(userData.getLastName());
+        if (userData.getEmail() != null) {
+            registrationEmailInput.sendKeys(userData.getEmail());
+        }
         passwordInput.sendKeys(userData.getPassword());
     }
 

@@ -66,7 +66,7 @@ public class MyBookingHotelTest {
         final UserPersonalData userData = new UserPersonalData()
                                             .setFirstName("Ala")
                                             .setLastName("Makota")
-                                            .setEmail(randomEmail)
+                                            //.setEmail(randomEmail)
                                             .setPassword("admin123");
         Thread.sleep(1000);
         assertEquals(randomEmail, createAnAccountPage.getEmail());
