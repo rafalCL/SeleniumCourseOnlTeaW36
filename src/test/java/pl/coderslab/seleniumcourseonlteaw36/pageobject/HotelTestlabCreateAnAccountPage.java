@@ -8,6 +8,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+import static pl.coderslab.seleniumcourseonlteaw36.Tools.isVisibleAndEnabled;
+
 public class HotelTestlabCreateAnAccountPage {
     private final WebDriver driver;
 
@@ -36,9 +38,19 @@ public class HotelTestlabCreateAnAccountPage {
         passwordInput.sendKeys(userData.getPassword());
     }
 
+    public boolean areMandatoryFormFieldsVisibleAndEnabled() {
+        return isVisibleAndEnabled(firstNameInput)
+                && isVisibleAndEnabled(lastNameInput)
+                && isVisibleAndEnabled(registrationEmailInput)
+                && isVisibleAndEnabled(passwordInput);
+    }
+
     public void clickRegister() {
-        // assertVisibleAndEnabled(registrationSubmitButton);
         registrationSubmitButton.click();
+    }
+
+    public boolean isRegistrationSubmitButtonVisibleAndEnabled() {
+        return isVisibleAndEnabled(registrationSubmitButton);
     }
 
     public String getEmail() {

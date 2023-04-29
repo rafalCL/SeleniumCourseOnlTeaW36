@@ -69,11 +69,9 @@ public class MyBookingHotelTest {
                                             //.setEmail(randomEmail)
                                             .setPassword("admin123");
         assertEquals(randomEmail, createAnAccountPage.getEmail());
-//        assertVisibleAndEnabled(firstNameInput);
-//        assertVisibleAndEnabled(lastNameInput);
-//        assertVisibleAndEnabled(registrationEmailInput);
-//        assertVisibleAndEnabled(passwordInput);
+        assertTrue(createAnAccountPage.areMandatoryFormFieldsVisibleAndEnabled(), "not all mandatory fields are visible and enabled");
         createAnAccountPage.fillPersonalInformationForm(userData);
+        assertTrue(createAnAccountPage.isRegistrationSubmitButtonVisibleAndEnabled(), "submit button not visible or not enabled");
         createAnAccountPage.clickRegister();
 
         HotelTestlabMyAccountPage myAccountPage = new HotelTestlabMyAccountPage(driver);
