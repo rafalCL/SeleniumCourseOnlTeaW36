@@ -39,7 +39,7 @@ public class QwantSearchCucumberSteps {
     public void first_results_link_texts_contain_phrase() {
         QwantSearchResultPage resultPage = new QwantSearchResultPage(driver);
         List<String> results = resultPage.getResultsLinkTexts();
-        String phraseToContain = "pogoda";
+        String phraseToContain = "szkice piórkiem";
         for (int i = 0; i < 3; i++) {
             String resultText = results.get(i);
             if (!resultText.toLowerCase().contains(phraseToContain)) {
