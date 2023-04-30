@@ -22,5 +22,6 @@ public class QwantSearchTest {
     public void successfulMainPagePhraseSearch() {
         String phraseToSearch = "Pogoda na majówkę";
         QwantMainPage mainPage = new QwantMainPage(driver);
+        mainPage.enterSearchPhrase(phraseToSearch);
     }
 }
